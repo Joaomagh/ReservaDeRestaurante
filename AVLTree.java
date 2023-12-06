@@ -27,6 +27,8 @@ public class AVLTree {
         return node.height;
     }
 
+    // calcula e retorna o fator de balanceamento de um nó, que é a diferença entre
+    // as alturas das subárvores direita e esquerda.
     private int fatorDeBalanceamento(Node node) {
         if (node == null) {
             return 0;
@@ -34,6 +36,7 @@ public class AVLTree {
         return altura(node.right) - altura(node.left);
     }
 
+    // atualiza altura com base na do seus filhos + 1
     private void atualizarAltura(Node node) {
         node.height = Math.max(altura(node.left), altura(node.right)) + 1;
     }
@@ -81,7 +84,7 @@ public class AVLTree {
         } else if (compareResult > 0) {
             root.right = insertRec(root.right, reservation);
         } else {
-            // Lidar com horários iguais (se necessário)
+
             return root;
         }
 
@@ -163,7 +166,6 @@ public class AVLTree {
 
         int balance = fatorDeBalanceamento(root);
 
-        // Rotações e balanceamento
         if (balance > 1) {
             if (fatorDeBalanceamento(root.left) >= 0) {
                 return rotateRight(root);
@@ -186,7 +188,6 @@ public class AVLTree {
     }
 
     public void edit(String oldReservationTime, String newReservationTime) {
-        // Encontrar a reserva com o horário antigo
         Reservation reservationToEdit = encontrarReserva(root, oldReservationTime);
 
         if (reservationToEdit != null) {
@@ -239,5 +240,4 @@ public class AVLTree {
             printTreeRec(root.right);
         }
     }
-    // Outros métodos auxiliares, se necessário
 }

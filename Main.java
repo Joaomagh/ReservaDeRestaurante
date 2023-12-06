@@ -2,30 +2,38 @@ public class Main {
   public static void main(String[] args) {
     AVLTree avlTree = new AVLTree();
 
-    System.out.println("Árvore AVL Antes da Edição:");
+    avlTree.insert(new Reservation("Alice", "17:00", 4));
+    avlTree.insert(new Reservation("Davi", "17:30", 2));
+    avlTree.insert(new Reservation("Charlie", "18:00", 6));
+    avlTree.insert(new Reservation("Maikol", "19:15", 3));
+    avlTree.insert(new Reservation("Vitor", "21:00", 5));
+    avlTree.insert(new Reservation("João", "18:10", 5));
+
+    // Exibir a árvore ANTES DA EDIÇÃO
+    System.out.println("ANTES DA EDIÇÃO:");
     avlTree.mostrarArvore();
 
-    // Adicionar reservas de exemplo
-    avlTree.insert(new Reservation("Alice", "18:00", 4));
-    avlTree.insert(new Reservation("Bob", "19:30", 2));
-    avlTree.insert(new Reservation("Charlie", "20:00", 6));
-
-    // Realizar operações e testes
-    avlTree.insert(new Reservation("David", "19:15", 3));
-    avlTree.insert(new Reservation("Eve", "21:00", 5));
-
-    // Testar o método de edição
-    avlTree.edit("19:30", "19:45");
+    // edições e remoções.
+    avlTree.edit("17:30", "19:30");
+    avlTree.delete(new Reservation("João", "18:11", 5));
 
     // Exibir a árvore após a edição
-    System.out.println("Reservas De Hoje:");
+    System.out.println("\nReservas De Hoje:");
     avlTree.mostrarArvore();
   }
 
 }
 
-// metodos de inserção, remoção e edit.
+// metodos CRUD
 
+// CREATE
 // avlTree.insert(new Reservation("Alice", "18:00", 4));
-// avlTree.delete(new Reservation("", "", 0));
+
+// READ(CONSULTAR)
+// avlTree.mostrarArvore();
+
+// UPDATE (ATUALIZAR)
 // avlTree.edit("19:30", "19:45");
+
+// delete
+// avlTree.delete(new Reservation("", "", 0));
